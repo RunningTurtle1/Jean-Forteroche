@@ -1,5 +1,7 @@
 <?php
-    function dbconnect ()
+class connexionManager
+{
+    protected function dbconnect ()
     {
         try
         {
@@ -11,20 +13,23 @@
             die('Erreur : '.$e->getMessage()); 
         }
     }
-
-    function showComments ()
+}
+class CommentManager extends connexionManager;
+{
+    public function showComments ()
     {
-        $db = dbconnect();
+        $db = $this->dbconnect();
         $req = $db->prepare('SELECT * FROM comments WHERE publicationId = ?');
         $comments = $req->execute(array($_GET['publicationId']));
         return $comments;
     }
     
-    function addComment ()
+    public function addComment ()
     {
-        $db = dbconnect();
+        $db = $this->dbconnect();
         $req = $db->prepare('INSERT INTO comments(textContent, commentDate, publicationId) VALUES (?, NOW(), ?)');
         $comment = $req->execute(array($_POST['comment'], $_GET['publicationId']));
         return $comment;
     }
+}
 ?>
