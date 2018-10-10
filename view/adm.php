@@ -14,6 +14,20 @@
     <div>
     <div>    
     </div>
-    Ceci est l'interface d'administration qui va permettre la création, la modification et la suppression de billet par l'administrateur du blog (cad l'auteur).
+    <?php
+    while ($data = $req->fetch())
+        {
+    ?>
+    <div class="posts">
+        <h3>
+            <?php echo htmlspecialchars($data['publicationTitle']); ?>
+            <em>le <?php echo $data['publicationDate']; ?></em>
+        </h3>
+        <a href="../controller/deletePost.php?publicationId=<?php echo $data['publicationId'] ?>" > Supprimer cette publication </a>
+    </div>
+    <?php
+    }
+    $req->closeCursor();
+    ?>
 </body>
 </html>

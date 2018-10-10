@@ -18,7 +18,7 @@
         echo nl2br(htmlspecialchars($data['publicationText']));
         ?>
         <br />
-        <em><a href="../controller/pub.php?publicationId=<?php echo $data['publicationId'] ?>" >Commentaires</a></em>
+        <em><a href="index.php?action=publication&amp;publicationId=<?php echo $data['publicationId'] ?>" >Commentaires</a></em>
         </p>
     </div>
     <?php

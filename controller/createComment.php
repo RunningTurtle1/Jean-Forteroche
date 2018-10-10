@@ -1,6 +1,5 @@
 <?php
-require('../model/comments.php');
-addComment();
-$publicationId = $_GET['publicationId'];
-header('location:../controller/pub.php?publicationId=' . $publicationId);
+require('model/comments.php');
+$commentManager = new CommentManager();
+$commentManager->addComment();
 ?>

@@ -1,19 +1,5 @@
 <?php
-class connexionManager
-{
-    protected function dbconnect ()
-    {
-        try
-        {
-            $db = new PDO('mysql:host=localhost;dbname=mydb;charset=utf8', 'root', '');
-            return $db;
-        } 
-        catch(Exception $e) 
-        { 
-            die('Erreur : '.$e->getMessage()); 
-        }
-    }
-}
+require_once("model/connexionManager.php");
 class PublicationManager extends connexionManager
 {     
     public function getPosts ()
@@ -53,11 +39,5 @@ class PublicationManager extends connexionManager
         $req->execute(array($publicationId));
         return $req;
     }
-    
-    public function addPub ()
-{
-    $db = dbconnect();
-    $req = $db->prepare('INSERT INTO publication(publicationTitle, publicationText, publicationDate) VALUE (?, ?, NOW())');
-    $req->execute(array($_POST['title'], $_POST['text']));
 }
 ?>

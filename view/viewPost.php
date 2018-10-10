@@ -4,7 +4,7 @@
     <title> Jean Rochefort, romancier</title>
 </head>
 <body>
-    <a href="pubs.php">Retour à la page d'acceuil </a>
+    <a href="index.php">Retour à la page d'acceuil </a>
     <div class="posts">
         <h3>
             <?= $post['publicationTitle']; ?>
@@ -31,7 +31,7 @@
     </div>
 
     <div class="comment">
-        <form action="../controller/createComment.php?publicationId=<?= $_GET['publicationId']?>" method="post">
+        <form action="index.php?action=addComment&amp;publicationId=<?= $_GET['publicationId']?>" method="post">
            <textarea type="textarea" id="comment" name="comment"> </textarea>
            <p> <input type="submit" value="envoyer"/> </p>
         </form>
