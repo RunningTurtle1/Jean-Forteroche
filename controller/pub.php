@@ -1,6 +1,6 @@
 <?php
     require('model/pubs.php');
-    $publicationManager = new PublicationManager();
-    $comments = $publicationManager->getComments($_GET['publicationId']);
-    $post = $publicationManager->getPost($_GET['publicationId']);
+    $publication = new PublicationManager();
+    $comments = $publication->getComments($_GET['publicationId']);
+    $post = $publication->getPost($_GET['publicationId']);
 ?>

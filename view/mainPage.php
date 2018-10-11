@@ -4,6 +4,7 @@
     <title> Jean Rochefort, romancier</title>
 </head>
 <body>
+    <a href="index.php?action=adm">Page d'administration</a>
     <?php
     while ($data = $req->fetch())
         {

@@ -25,6 +25,13 @@ class PublicationManager extends connexionManager
         $req->execute(array($publicationId));
     }
     
+    public function editPost ($publicationId)
+    {
+        $db = $this->dbconnect();
+        $req = $db->prepare('UPDATE publication SET publicationTitle = ?, publicationText = ? WHERE publicationId = ?');
+        $req->execute(array($_POST['title'], $_POST['text'], $publicationId));
+    }
+
     public function addPub ()
     {
         $db = $this->dbconnect();
