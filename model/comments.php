@@ -17,5 +17,12 @@ class CommentManager extends connexionManager
         $comment = $req->execute(array($_POST['comment'], $_GET['publicationId']));
         return $comment;
     }
+
+    public function deleteComment ($publicationId)
+    {
+        $db = $this->dbconnect();
+        $req = $db->prepare('DELETE FROM comments WHERE publicationId = ?');
+        $req->execute(array($publicationId));
+    }
 }
 ?>
