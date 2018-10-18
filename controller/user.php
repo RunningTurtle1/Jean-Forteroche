@@ -1,14 +1,24 @@
 <?php
-require('model/userManager.php');
-$userManager = new UserManager;
-$user = $userManager->connect($_POST['user']);
-if (($_POST['password']) == $user['password'])
+function userSignIn ()
 {
-    $_SESSION['connected'] = true;
-    header('location=index.php?action=adm');
+    require('model/userManager.php');
+    $userManager = new UserManager;
+    $user = $userManager->connect($_POST['user']);
+    if (($_POST['password']) == $user['password'])
+    {
+        $_SESSION['connected'] = true;
+        header('location:index.php?action=adm');
+    }
+    else
+    {
+        header('location:index.php?action=authentification');
+    }
 }
-else
+
+function userSignOut ()
 {
-    header('location:index.php?action=authentification');
+    session_destroy();
 }
+
+
 ?>

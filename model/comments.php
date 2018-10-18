@@ -10,11 +10,11 @@ class CommentManager extends connexionManager
         return $comments;
     }
     
-    public function addComment ()
+    public function addComment ($comment, $publicationId)
     {
         $db = $this->dbconnect();
         $req = $db->prepare('INSERT INTO comments(textContent, commentDate, publicationId) VALUES (?, NOW(), ?)');
-        $comment = $req->execute(array($_POST['comment'], $_GET['publicationId']));
+        $comment = $req->execute(array($comment, $publicationId);
         return $comment;
     }
 
