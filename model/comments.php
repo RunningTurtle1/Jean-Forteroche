@@ -10,11 +10,11 @@ class CommentManager extends connexionManager
         return $comments;
     }
     
-    public function addComment ($comment, $publicationId)
+    public function addComment ($comment, $publicationId, $username)
     {
         $db = $this->dbconnect();
-        $req = $db->prepare('INSERT INTO comments(textContent, commentDate, publicationId) VALUES (?, NOW(), ?)');
-        $comment = $req->execute(array($comment, $publicationId);
+        $req = $db->prepare('INSERT INTO comments(textContent, commentDate, publicationId, username) VALUES (?, NOW(), ?, ?)');
+        $comment = $req->execute(array($comment, $publicationId, $username));
         return $comment;
     }
 
@@ -23,6 +23,13 @@ class CommentManager extends connexionManager
         $db = $this->dbconnect();
         $req = $db->prepare('DELETE FROM comments WHERE publicationId = ?');
         $req->execute(array($publicationId));
+    }
+
+    public function reportComment ($publicationId)
+    {
+        $db = $this->dbconnect();
+        $req = $db->prepare('INSERT INTO comments_report(commentId, reporter Id) VALUES(?, ?)');
+        $comment->execute($commentId, $reporterId);
     }
 }
 ?>

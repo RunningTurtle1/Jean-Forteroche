@@ -10,5 +10,12 @@ class UserManager extends connexionManager
         $user = $req->fetch();
         return $user;
     }
+
+    public function createAccount ($email, $username, $password)
+    {
+        $db = $this->dbconnect();
+        $req = $db->prepare('INSERT INTO users(emailAddress, username, password,userType) VALUES(?, ?, ?, \'user\') ');
+        $req->execute(array($email, $username, $password));
+    }
 }
 ?>

@@ -5,7 +5,15 @@ class PublicationManager extends connexionManager
     public function getPosts ()
     {
         $db = $this->dbconnect();
-        $req = $db->query('SELECT * FROM publication');
+        
+        $req =$db->query('SELECT COUNT(publicationId) as nbArt FROM publication');
+        $data = $req->fetch();
+        $nbArt = $data['nbArt'];
+        $perPage = 3;
+        $cPage  = 2;
+        $var = ($cPage - 1) * $perPage;
+        $req = $db->prepare('SELECT * FROM publication ORDER BY publicationId DESC LIMIT 0 , 3 ');
+        $req->execute();
         return $req;
     }
     

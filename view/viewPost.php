@@ -21,8 +21,10 @@
             {
         ?>
                 <div class="comment">
-                    <?= htmlspecialchars($comment['textContent'])?>
+                    <?= htmlspecialchars($comment['textContent'])?> <br />
+                    <?= $comment['Username'] ?>
                     <?= $comment['commentDate']?>
+                    <a href="index.php?action=report">Signaler</a>
                 </div>
         <?php
             }

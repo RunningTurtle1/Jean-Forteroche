@@ -5,6 +5,7 @@
 </head>
 <body>
     <a href="index.php?action=adm">Page d'administration</a>
+    <a href="index.php?action=newAccount"> Créer un compte </a>
     <?php
     while ($data = $req->fetch())
         {

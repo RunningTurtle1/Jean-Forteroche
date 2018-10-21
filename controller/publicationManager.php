@@ -1,5 +1,5 @@
 <?php
-function checkUserLoggin () 
+function checkAdmin () 
 {
     if (!$_SESSION['connected'])
     {
@@ -29,7 +29,7 @@ function showPosts ()
 
 function showPostTitle ()
 {
-    checkUserLoggin();
+    checkAdmin();
 
     require_once('model/pubs.php');
     $publication = new PublicationManager();
@@ -40,7 +40,7 @@ function showPostTitle ()
 
 function createPost ()
 {
-    checkUserLoggin();
+    checkAdmin();
     require('model/pubs.php');
     $publication = new PublicationManager();
     $publication->addPub();
@@ -49,7 +49,7 @@ function createPost ()
 
 function deletePost ()
 {
-    checkUserLoggin();
+    checkAdmin();
 
     $publication->deletePost($_GET['publicationId']);
     require('model/comments.php');
@@ -59,7 +59,7 @@ function deletePost ()
 
 function editPost ()
 {
-    checkUserLoggin();
+    checkAdmin();
 
     require('model/pubs.php');
     $publication = new PublicationManager();
