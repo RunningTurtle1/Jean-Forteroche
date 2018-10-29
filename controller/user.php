@@ -8,7 +8,7 @@ function userSignIn ()
     {
         $_SESSION['admin'] = true;
         header('location:index.php?action=adm');
-        $_SESSION['username'] = $_POST['username'];
+        $_SESSION['username'] = $_POST['user'];
     }
     else if (($_POST['password']) == $user['password'])
     {

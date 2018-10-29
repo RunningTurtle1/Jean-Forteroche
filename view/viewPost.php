@@ -5,7 +5,7 @@
 </head>
 <body>
     <a href="index.php">Retour à la page d'acceuil </a>
-    <a href="index.php?action=authentication">Se connecter </a>
+<?php include('view/header.php') ?>
     <div class="posts">
         <h3>
             <?= $post['publicationTitle']; ?>
