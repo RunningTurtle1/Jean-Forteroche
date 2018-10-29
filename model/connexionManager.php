@@ -5,7 +5,8 @@ class connexionManager
     {
         try
         {
-            $db = new PDO('mysql:host=localhost;dbname=mydb;charset=utf8', 'root', '');
+            require('model/accesscode.php'); 
+            $db = new PDO('mysql:host=localhost;dbname=mydb;charset=utf8', $login, $password);
             return $db;
         } 
         catch(Exception $e) 

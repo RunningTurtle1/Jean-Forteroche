@@ -5,6 +5,7 @@
 </head>
 <body>
     <a href="index.php">Retour à la page d'acceuil </a>
+    <a href="index.php?action=authentication">Se connecter </a>
     <div class="posts">
         <h3>
             <?= $post['publicationTitle']; ?>
@@ -24,7 +25,7 @@
                     <?= htmlspecialchars($comment['textContent'])?> <br />
                     <?= $comment['Username'] ?>
                     <?= $comment['commentDate']?>
-                    <a href="index.php?action=report">Signaler</a>
+                    <a href="index.php?action=report&amp;commentId=<?= $comment['commentId']?>&amp;publicationId=<?= $_GET['publicationId']?>">Signaler</a>
                 </div>
         <?php
             }

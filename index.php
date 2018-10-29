@@ -1,89 +1,52 @@
 <?php
-session_start();
+if (!isset($_SESSION))
+{
+    session_start();
+}
 
 if (isset($_GET['action']))
 {
     switch ($_GET['action']) 
     {
         case "readpost":
-            require('controller/pub.php');
-            require('view/viewPost.php');
+            require('controller/publicationManager.php');
+            showPost();
         break;
 
         case "addComment":
-            if ($_SESSION['connected'] == true)
-            {
-                require('controller/createComment.php');
-                require('controller/pub.php');
-                require('view/viewPost.php');
-            }
-            else
-            {
-                header('location:index.php?action=authentification');
-            }
+            require('controller/commentManager.php');
+            addComment();
         break;
 
         case "adm":
-            if ($_SESSION['connected'] == true)
-            {
-                require('controller/showPostTitle.php');
-                require('view/adm.php'); 
-            }
-            else
-            {
-                header('location:index.php?action=authentification');
-            }
+            require('controller/publicationManager.php');
+            showPostTitle();
+            orderReports();
         break;
 
         case "deletepost":
-            if ($_SESSION['connected'] == true)
-            {
-                require('controller/showPostTitle.php');
-                require('view/adm.php');
-                require('controller/deletePost.php');
-                header('location:index.php?action=adm');
-            }
-            else
-            {
-                header('location:index.php?action=authentification');
-            }
+            require('controller/publicationManager');
+            deletePost();
+            header('location:index.php?action=adm');
         break;
 
         case "createpub":
-            if ($_SESSION['connected'] == true)
-            {
-                require('controller/createPub.php');
-                header('location:index.php');
-            }
-            else
-            {
-                header('location:index.php?action=authentification');
-            }
+            require('controller/publicationManager.php');
+            createPost();
+            header('location:index.php');
         break;
 
         case "editpost":
-            if ($_SESSION['connected']= true)
-            {
-                require('controller/pub.php');
-                require('controller/showPostTitle.php');
-                require('view/adm.php');
-            }
-            else
-            {
-                header('location:index.php?action=authentification');
-            }
+            require('controller/publicationManager.php');
+            showPost();
+            showPostTitle();
         break;
 
         case "editedpost":
-            if ($_SESSION['connected'] == true)
-            {
-                require('controller/editPost.php');
-                header('location:index.php?action=adm');
-            }    
-            else
-            {
-                header('location:index.php?action=authentification');
-            }
+            require('controller/publicationManager.php');
+            editPost();
+            header('location:index.php?action=adm');
+            
         break;
 
         case "authentification": 
@@ -92,21 +55,37 @@ if (isset($_GET['action']))
 
         case "auth":
             require('controller/user.php');
+            userSignIn();
         break;
 
         case "signout": 
-            require('signout.php');
+            require('controller/user.php');
+            userSignOut();
             header('location:index.php');
         break;
 
+        case "newAccount":
+            require('view/createAccount.php');
+        break;
+
+        case "createaccount":
+            require('controller/user.php');
+            createAccount($_POST['email'], $_POST['username'], $_POST['password']);
+            header('location:index.php');
+        break;
+
+        case "report" :
+            require('controller/commentManager.php');
+            reportComment();
+        break;
         default:
-            require("controller/pubs.php");
+            require("controller/publicationManager.php");
             require("view/mainPage.php");
     }
 }
 else
 {
-    require("controller/pubs.php");
-    require("view/mainPage.php");
+    require("controller/publicationManager.php");
+    showPosts();
 }
 ?>

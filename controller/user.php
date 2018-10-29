@@ -4,7 +4,7 @@ function userSignIn ()
     require('model/user.php');
     $userManager = new UserManager;
     $user = $userManager->connect($_POST['user']);
-    if ((($_POST['password']) == $user['password']) && ($user['userType'] == "admin"))
+    if ((($_POST['password']) == $user['password']) && ($user['userType'] == "Admin"))
     {
         $_SESSION['admin'] = true;
         header('location:index.php?action=adm');
@@ -14,6 +14,7 @@ function userSignIn ()
     {
         $_SESSION['userConnected'] = true;
         $_SESSION['username'] = $_POST['user'];
+        header('location:index.php');
     }
     else
     {

@@ -1,7 +1,7 @@
 <?php
 function checkAdmin () 
 {
-    if (!$_SESSION['connected'])
+    if (!$_SESSION['admin'])
     {
         header('location:index.php?action=authentification');
         //si l'utilisateur n'est pas connecté il est renvoyé à la page d'authentification
@@ -64,5 +64,12 @@ function editPost ()
     require('model/pubs.php');
     $publication = new PublicationManager();
     $publication->editPost($_GET['publicationId']);
+}
+
+function orderReports ()
+{
+    require('model/comments.php');
+    $comments = new CommentManager();
+    $comments->orderReports();
 }
 ?>

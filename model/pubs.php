@@ -2,18 +2,29 @@
 require_once("model/connexionManager.php");
 class PublicationManager extends connexionManager
 {     
-    public function getPosts ()
+    public function showPosts ()
     {
         $db = $this->dbconnect();
         
-        $req =$db->query('SELECT COUNT(publicationId) as nbArt FROM publication');
+        $req =$db->query('SELECT COUNT(publicationId) as nbArt FROM publication'); 
         $data = $req->fetch();
         $nbArt = $data['nbArt'];
         $perPage = 3;
-        $cPage  = 2;
-        $var = ($cPage - 1) * $perPage;
-        $req = $db->prepare('SELECT * FROM publication ORDER BY publicationId DESC LIMIT 0 , 3 ');
+        $nbPage = ceil($nbArt / $perPage);
+        $cPage  = 1;
+        $var = (($cPage - 1) * $perPage);
+        $req = $db->prepare('SELECT * FROM publication ORDER BY publicationId DESC LIMIT :cPage , :perPage ');
+        $req->bindValue(':cPage', $var, PDO::PARAM_INT);
+        $req->bindValue(':perPage', $perPage, PDO::PARAM_INT);
         $req->execute();
+        return $req;
+    }
+
+    public function getPosts ()
+    {
+        $db = $this->dbconnect();
+
+        $req = $db->query('SELECT * FROM publication ORDER BY publicationId DESC');
         return $req;
     }
     

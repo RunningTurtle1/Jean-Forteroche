@@ -25,11 +25,36 @@ class CommentManager extends connexionManager
         $req->execute(array($publicationId));
     }
 
-    public function reportComment ($publicationId)
+    public function reportComment ($commentId, $reporterId)
     {
         $db = $this->dbconnect();
-        $req = $db->prepare('INSERT INTO comments_report(commentId, reporter Id) VALUES(?, ?)');
-        $comment->execute($commentId, $reporterId);
+        $req = $db->prepare('INSERT INTO comments_report(commentId, reporterId) VALUES (?, ?)');
+        $req->execute(array($commentId, $reporterId));
+    }
+
+    public function getComment ($commentId, $reports)
+    {
+        $db = $this->dbconnect();
+        $req = $db->prepare('SELECT textContent, username FROM comments WHERE commentId = ?');
+        $req->execute(array($commentId));
+        $comment = $req->fetch();
+        echo $comment['textContent'] . '<br />' . $comment['username'] . ' Signalé ' . $reports . ' fois </br>' ;
+        return $comment;
+
+    }
+
+    public function orderReports ()
+    {
+        $db = $this->dbconnect();
+        $req = $db->query('SELECT COUNT(DISTINCT reporterId) AS reports, commentId FROM comments_report GROUP BY commentId LIMIT 0, 5');
+
+        while ($data = $req->fetch())
+        {
+            $commentId = $data['commentId'];
+            $reports = $data['reports'];
+            $this->getComment($commentId, $reports);
+        }
+        $req->closeCursor();
     }
 }
 ?>
