@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title> </title>
-    </head>
+<?php
+    include('view/head.php');
+?>
     <body>
         <form method="post" action="index.php?action=auth">
             <p><input type="text" name="user" id="user" /></p>

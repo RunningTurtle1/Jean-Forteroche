@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title> Jean Rochefort, romancier</title>
-</head>
+<?php
+    include('view/head.php');
+?>
 <body>
     <a href="index.php">Retour à la page d'acceuil</a> <a href="index.php?action=signout">Me déconnecter </a>
     <?php

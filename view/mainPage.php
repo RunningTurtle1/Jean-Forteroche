@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<head>
-    <meta charset="utf-8" />
-    <title> Jean Rochefort, romancier</title>
-</head>
+<?php
+    include('view/head.php');
+?>
 <body>
     <?php include('view/header.php') ?>    
     <?php
