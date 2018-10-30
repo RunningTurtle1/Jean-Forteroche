@@ -11,10 +11,8 @@
         else
         {
     ?>
-        <p>
             Bienvenue <?= $_SESSION['username'] ?>
             <a href="index.php?action=signout">Me déconnecter </a>
-        </p>
     <?php   
         }
     ?>

@@ -2,12 +2,14 @@
     include('view/head.php');
 ?>
 <body>
-    <?php include('view/header.php') ?>    
+    <div class="container">
+        <?php include('view/header.php') ?>    
+    </div>
     <?php
     while ($data = $req->fetch())
         {
     ?>
-    <div class="posts">
+    <div class="posts container">
         <h3>
             <?php echo htmlspecialchars($data['publicationTitle']); ?>
             <em>le <?php echo $data['publicationDate']; ?></em>
