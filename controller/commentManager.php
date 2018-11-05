@@ -32,4 +32,6 @@ function reportComment()
         header('location:index.php');
     }
 }
+
+
 ?>

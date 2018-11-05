@@ -1,0 +1,52 @@
+@font-face
+{
+    font-family: 'BethEllen';
+    src: url('../fonts/beth-ellen/BethEllen.otf');
+}
+@font-face
+{
+    font-family: 'bodedo';
+    src: url('../fonts/hvd-bodedo/HVD_Bodedo.ttf');
+}
+body{
+    background-color: rgb(238, 238, 238);
+    font-family: 'Comic Sans MS';
+}
+header
+{
+    background-image: url('../route-alaska.jpg');
+    height: 550px;
+    font-family: 'BethEllen', impact;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header h1
+{
+    font-size: 60px;
+    color: rgb(230, 230, 230); 
+}
+.meta
+{
+    height : 150px;
+    background-color: lightgrey;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+}
+.meta ul
+{
+    list-style-type: none;
+    font-family: bodedo;
+}
+ul a
+{
+    text-decoration: none; 
+    color: black;
+}
+.meta li
+{
+    margin: 5px 0;
+}

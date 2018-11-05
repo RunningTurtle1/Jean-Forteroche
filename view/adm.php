@@ -6,6 +6,7 @@
     <div class="container">
         <?php include('view/posts.php') ?>
         <?php include('view/showPosts.php')?>
+        <?php include('view/commentsreport.php') ?>
     </div>
 </body>
 </html>

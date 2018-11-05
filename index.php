@@ -3,7 +3,6 @@ if (!isset($_SESSION))
 {
     session_start();
 }
-
 if (isset($_GET['action']))
 {
     switch ($_GET['action']) 
@@ -12,68 +11,56 @@ if (isset($_GET['action']))
             require('controller/publicationManager.php');
             showPost();
         break;
-
         case "addComment":
             require('controller/commentManager.php');
             addComment();
         break;
-
         case "adm":
             require('controller/publicationManager.php');
             showPostTitle();
             orderReports();
         break;
-
         case "deletepost":
             require('controller/publicationManager');
             deletePost();
             header('location:index.php?action=adm');
         break;
-
         case "createpub":
             require('controller/publicationManager.php');
             createPost();
             header('location:index.php');
         break;
-
         case "editpost":
             require('controller/publicationManager.php');
             showPost();
             showPostTitle();
         break;
-
         case "editedpost":
             require('controller/publicationManager.php');
             editPost();
             header('location:index.php?action=adm');
             
         break;
-
         case "authentification": 
             require('view/authentification.php');
         break;
-
         case "auth":
             require('controller/user.php');
             userSignIn();
         break;
-
         case "signout": 
             require('controller/user.php');
             userSignOut();
             header('location:index.php');
         break;
-
         case "newAccount":
             require('view/createAccount.php');
         break;
-
         case "createaccount":
             require('controller/user.php');
             createAccount($_POST['email'], $_POST['username'], $_POST['password']);
             header('location:index.php');
         break;
-
         case "report" :
             require('controller/commentManager.php');
             reportComment();

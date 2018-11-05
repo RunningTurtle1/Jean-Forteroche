@@ -35,6 +35,7 @@ function showPostTitle ()
     $publication = new PublicationManager();
     $req = $publication->getPosts();
 
+    $comments = orderReports();
     require('view/adm.php');
 }
 
@@ -68,8 +69,17 @@ function editPost ()
 
 function orderReports ()
 {
-    require('model/comments.php');
-    $comments = new CommentManager();
-    $comments->orderReports();
+    require_once('model/comments.php');
+    $commentManager = new CommentManager();
+    $req = $commentManager->orderReports();
+    $comments = [];
+    while ($data = $req->fetch())
+        {
+            
+            $commentId = $data['commentId'];
+            $comments[] = ['comment'=>$commentManager->getComment($commentId),'count'=>$data['reports']];
+        }
+        $req->closeCursor();
+    return $comments;
 }
 ?>
