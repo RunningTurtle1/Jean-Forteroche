@@ -35,7 +35,7 @@ class CommentManager extends connexionManager
     public function getComment ($commentId)
     {
         $db = $this->dbconnect();
-        $req = $db->prepare('SELECT textContent, username 
+        $req = $db->prepare('SELECT textContent, username, commentId
         FROM comments  
         WHERE commentId = ?');
         $req->execute(array($commentId));

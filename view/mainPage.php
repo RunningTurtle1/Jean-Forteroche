@@ -36,8 +36,4 @@
             <?php include('view/meta.php') ?>    
         </div>
     </div>
-    <?php
-    }
-    $req->closeCursor();
-    ?>
 </body>
