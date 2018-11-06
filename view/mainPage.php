@@ -11,25 +11,24 @@
     </header>
     <div class="container">
         <?php
-        while ($data = $req->fetch())
+        foreach($posts as $post)
             {
         ?>
         <div class="posts col-lg-8 col-lg-push-1">
             <h3>
-                <?php echo htmlspecialchars($data['publicationTitle']); ?>
+                <?php echo htmlspecialchars($post['post'][1]); ?>
             </h3>
-                <em>le <?php echo $data['publicationDate']; ?></em>
+                <em>le <?php echo $post['post'][3]; ?></em>
             <p>
             <?php
-            echo nl2br(htmlspecialchars($data['publicationText']));
+            echo nl2br(htmlspecialchars($post['post'][2]));
             ?>
             <br />
-            <em><a href="index.php?action=readpost&amp;publicationId=<?php echo $data['publicationId'] ?>" >Commentaires</a></em>
+            <em><a href="index.php?action=readpost&amp;publicationId=<?php echo $post['post'][0] ?>" >Commentaires</a></em>
             </p>
         </div>
         <?php
             }
-                $req->closeCursor();
         ?>        
         
         <div class="col-lg-3">

@@ -25,7 +25,13 @@ class PublicationManager extends connexionManager
         $db = $this->dbconnect();
 
         $req = $db->query('SELECT * FROM publication ORDER BY publicationId DESC');
-        return $req;
+        $posts = [];
+        while ($data = $req->fetch())
+        {
+            $posts[] = ['post'=>$data];
+        }
+        $req->closeCursor();
+        return $posts;
     }
     
     public function getPost ($publicationId)

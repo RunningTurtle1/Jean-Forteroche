@@ -1,6 +1,5 @@
 <div class="container">
 <?php
-    var_dump($comments);
     foreach($comments as $comment)
     {
 ?>

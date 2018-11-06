@@ -18,15 +18,6 @@ function showPost()
     require('view/viewPost.php');
 }
 
-function showPosts ()
-{
-    require_once('model/pubs.php');
-    $publicationManager = new PublicationManager();
-    $req = $publicationManager->getPosts();
-    
-    require('view/mainPage.php');
-}
-
 function showPostTitle ()
 {
     checkAdmin();
@@ -74,12 +65,19 @@ function orderReports ()
     $req = $commentManager->orderReports();
     $comments = [];
     while ($data = $req->fetch())
-        {
-            
-            $commentId = $data['commentId'];
-            $comments[] = ['comment'=>$commentManager->getComment($commentId),'count'=>$data['reports']];
-        }
-        $req->closeCursor();
+    {        
+       $commentId = $data['commentId'];
+        $comments[] = ['comment'=>$commentManager->getComment($commentId),'count'=>$data['reports']];
+    }
+    $req->closeCursor();
     return $comments;
+}
+
+function showPosts ()
+{
+    require_once('model/pubs.php');
+    $publicationManager = new PublicationManager();
+    $posts = $publicationManager->getPosts();
+    require('view/mainPage.php');
 }
 ?>
