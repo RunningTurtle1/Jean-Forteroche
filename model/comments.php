@@ -7,6 +7,12 @@ class CommentManager extends connexionManager
         $db = $this->dbconnect();
         $req = $db->prepare('SELECT * FROM comments WHERE publicationId = ?');
         $comments = $req->execute(array($_GET['publicationId']));
+        $comments = [];
+        while ($data = $req->fetch())
+        {
+            $comments[] = ['$comment'=>$data];
+        }
+        $req->closeCursor();
         return $comments;
     }
     
@@ -18,11 +24,25 @@ class CommentManager extends connexionManager
         return $comment;
     }
 
-    public function deleteComment ($publicationId)
+    public function deleteComments ($publicationId)
     {
         $db = $this->dbconnect();
         $req = $db->prepare('DELETE FROM comments WHERE publicationId = ?');
         $req->execute(array($publicationId));
+    }
+
+    public function deleteComment ($commentId)
+    {
+        $db = $this->dbconnect();
+        $req = $db->prepare('DELETE FROM comments WHERE commentId = ?');
+        $req->execute(array($commentId));
+    }
+
+    public function unreportcomment ($commentId)
+    {
+        $db = $this->dbconnect();
+        $req = $db->prepare('DELETE FROM comments_report WHERE commentId = ?');
+        $req->execute(array($commentId));
     }
 
     public function reportComment ($commentId, $reporterId)

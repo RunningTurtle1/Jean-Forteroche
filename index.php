@@ -25,6 +25,14 @@ if (isset($_GET['action']))
             deletePost();
             header('location:index.php?action=adm');
         break;
+        case "deletecomment":
+            require('controller/commentManager.php');
+            deletecomment();
+        break;
+        case "unreportcomment":
+            require('controller/commentManager.php');
+            unreportcomment();
+        break;
         case "createpub":
             require('controller/publicationManager.php');
             createPost();
@@ -32,8 +40,8 @@ if (isset($_GET['action']))
         break;
         case "editpost":
             require('controller/publicationManager.php');
-            showPost();
-            showPostTitle();
+            getPost();
+            
         break;
         case "editedpost":
             require('controller/publicationManager.php');

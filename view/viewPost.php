@@ -3,7 +3,7 @@
 ?>
 <body>
     <a href="index.php">Retour à la page d'acceuil </a>
-<?php include('view/header.php') ?>
+<?php include('view/meta.php') ?>
     <div class="posts">
         <h3>
             <?= $post['publicationTitle']; ?>
@@ -16,18 +16,17 @@
 
     <div class="comments">
         <?php
-            while ($comment = $comments->fetch())
+            foreach ($comments as $comment)
             {
         ?>
                 <div class="comment">
-                    <?= htmlspecialchars($comment['textContent'])?> <br />
-                    <?= $comment['Username'] ?>
-                    <?= $comment['commentDate']?>
-                    <a href="index.php?action=report&amp;commentId=<?= $comment['commentId']?>&amp;publicationId=<?= $_GET['publicationId']?>">Signaler</a>
+                    <?= htmlspecialchars($comment['comment'][1])?> <br />
+                    <?= $comment['comment'][4] ?>
+                    <?= $comment['comment'][2]?>
+                    <a href="index.php?action=report&amp;commentId=<?= $comment['comment'][0]?>&amp;publicationId=<?= $_GET['publicationId']?>">Signaler</a>
                 </div>
         <?php
             }
-            $comments->closeCursor();
         ?>
     </div>
 

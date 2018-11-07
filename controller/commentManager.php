@@ -22,6 +22,21 @@ function addComment ()
     }
 }
 
+function deletecomment ()
+{
+    $commentManager = new CommentManager();
+    $commentManager->deleteComment($_GET['commentId']);
+    $commentManager->unreportcomment($_GET['commentId']);
+    header('location:index.php?action=adm');
+}
+
+function unreportcomment()
+{
+    $commentManager = new CommentManager();
+    $commentManager->unreportcomment($_GET['commentId']);
+    header('location:index.php?action=adm');
+}
+
 function reportComment()
 {
     checkUserLoggin();

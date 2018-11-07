@@ -14,8 +14,15 @@ function showPost()
     $publication = new PublicationManager();
     $comments = $publication->getComments($_GET['publicationId']);
     $post = $publication->getPost($_GET['publicationId']);
-
     require('view/viewPost.php');
+}
+
+function getPost()
+{
+    require_once('model/pubs.php');
+    $publication = new PublicationManager();
+    $post = $publication->getPost($_GET['publicationId']);
+    require('view/adm.php');
 }
 
 function showPostTitle ()
@@ -24,8 +31,7 @@ function showPostTitle ()
 
     require_once('model/pubs.php');
     $publication = new PublicationManager();
-    $req = $publication->getPosts();
-
+    $posts = $publication->getPosts();
     $comments = orderReports();
     require('view/adm.php');
 }
@@ -46,7 +52,7 @@ function deletePost ()
     $publication->deletePost($_GET['publicationId']);
     require('model/comments.php');
     $comments = new CommentManager();
-    $comments->deleteComment($_GET['publicationId']);
+    $comments->deleteComments($_GET['publicationId']);
 }
 
 function editPost ()

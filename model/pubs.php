@@ -68,8 +68,14 @@ class PublicationManager extends connexionManager
     {
         $db = $this->dbconnect();
         $req = $db->prepare('SELECT * FROM comments WHERE publicationId = ?');
-        $req->execute(array($publicationId));
-        return $req;
+        $comments = $req->execute(array($_GET['publicationId']));
+        $comments = [];
+        while ($data = $req->fetch())
+        {
+            $comments[] = ['comment'=>$data];
+        }
+        $req->closeCursor();
+        return $comments;
     }
 }
 ?>
