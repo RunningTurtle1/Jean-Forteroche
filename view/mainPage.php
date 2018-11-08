@@ -2,19 +2,23 @@
     include('view/head.php');
 ?>
 <body>
-    <header class="container">
-        <div>
-            <h1>
-                Billet simple pour l'alaska...
-            </h1>
-        </div>
+    <div id="ancre"> </div>
+    <a href="#ancre" id="bouton"><span class="glyphicon glyphicon-circle-arrow-up"> </span></a>
+    <header class="container col-lg-10">
+        <h1>
+            Billet simple pour l'alaska...
+        </h1>
+        <img src="public/route-alaska.jpg" alt="Une route en alaska" id="background" class="col-lg-10"/>
     </header>
     <div class="container">
+    <div class="col-lg-3 meta col-lg-push-9">
+            <?php include('view/meta.php') ?>    
+        </div>
         <?php
         foreach($posts as $post)
             {
         ?>
-        <div class="posts col-lg-8 col-lg-push-1">
+        <div class="posts col-lg-8">
             <h3>
                 <?php echo htmlspecialchars($post['post'][1]); ?>
             </h3>
@@ -31,8 +35,6 @@
             }
         ?>        
         
-        <div class="col-lg-3">
-            <?php include('view/meta.php') ?>    
-        </div>
     </div>
+<script src="public/js/script.js"></script>
 </body>

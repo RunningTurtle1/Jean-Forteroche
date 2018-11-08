@@ -4,13 +4,19 @@
     ?>
         <div>
             <form action="index.php?action=editedpost&amp;publicationId=<?php echo $post['publicationId'];?>" method="post">
-                <p><input type="text" id="title" name="title"  value="<?php echo $post['publicationTitle']; ?>"/></p>
                 <p>
-                    <textarea id="text" name="text">
-                        <?php echo $post['publicationText']; ?>
-                    </textarea>
+                    <label for="title"> Titre de l'article <br />
+                        <input type="text" id="title" name="title"  value="<?php echo $post['publicationTitle']; ?>"/>
+                    </label>
                 </p>
-                <p><input type="submit" value="Modifier"></p>
+                <p>
+                    <label for="text"> L'article <br />
+                        <textarea id="text" name="text">
+                            <?php echo $post['publicationText']; ?>
+                        </textarea>
+                    </label>
+                </p>
+                <p><input type="submit" class="submit" value="Modifier"></p>
             </form>
         </div>
     <?php
@@ -21,13 +27,17 @@
     <div>
         <form action="index.php?action=createpub" method="post">
             <p>
-                <input type="text" id="title" name="title" />
+                <label for="title"> Titre de l'article <br />
+                    <input type="text" id="title" name="title" />
+                </label>
             </p>
             <p>
-                <textarea id="text" name="text">
-                </textarea>
+                <label for="text"> L'article
+                    <textarea id="text" name="text" class="col-lg-6">
+                    </textarea>
+                </label>
             </p>
-            <p> <input type="submit" value="envoyer"/> </p>
+            <p> <input type="submit" class="submit" value="envoyer"/> </p>
         </form>   
     </div>
     <?php

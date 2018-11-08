@@ -8,23 +8,41 @@
     font-family: 'bodedo';
     src: url('../fonts/hvd-bodedo/HVD_Bodedo.ttf');
 }
-body{
+body
+{
     background-color: rgb(238, 238, 238);
     font-family: 'Comic Sans MS';
 }
 header
 {
-    background-image: url('../route-alaska.jpg');
-    height: 550px;
+    height: 450px;
+    width: 100%;
+    margin-top: 40px;
+    float: none !important;;
     font-family: 'BethEllen', impact;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 header h1
 {
     font-size: 60px;
     color: rgb(230, 230, 230); 
+    z-index: 1;
+}
+#background
+{
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    z-index: 0;
+}
+#bouton
+{
+    font-size: xx-large;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
 }
 .meta
 {
@@ -49,4 +67,98 @@ ul a
 .meta li
 {
     margin: 5px 0;
+}
+
+/**!! 
+
+FORMULAIRES 
+
+!!**/
+input
+{
+    margin-top: 5px;
+}
+.submit
+{
+    border-radius: 15px;
+    font-weight: bold;
+    color: white; 
+    padding: 8px;
+    border: 0px;
+    background-color:#1E90FF;
+}
+#authentification{
+    background: lightgray;
+    float: none !important;
+    margin: auto;
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/**!! 
+
+ADMIN 
+
+!!**/
+h2
+{
+    text-align: center;
+    font-size: 2.8em;
+}
+.deco:before
+{
+	content: ' ';
+	display: inline-block;
+	border-bottom: 1px rgb(180, 180, 180) solid;
+	width: 60px;
+	position: relative;
+	top: -8px;
+	left: -63px;
+	z-index: 1;
+}
+.deco
+{
+	border: 4px  white solid;
+	background-color: rgb(92, 173, 211);
+	border-radius: 50%;
+	height: 20px;
+	width: 20px;
+	margin: auto;
+	margin-bottom: 10px;
+	z-index: 2;
+	position: relative;
+	top: -10px;
+}
+.deco:after
+{
+	content: ' ';
+	display: inline-block;
+	border-bottom: 1px rgb(180, 180, 180) solid;
+	width: 60px;
+	position: relative;
+	top: -29px;
+	right: -16px;
+	z-index: 1;
+}	
+
+/** 
+
+!!
+    PAGE DES COMMENTAIRES
+!!
+**/
+.posts, .comments, .commentarea
+{
+    max-width: 95%;
+    margin: auto;
+    margin: 15px;
+}
+.comment{
+    margin-bottom: 15px;
+    border-bottom: 1px silver solid;
 }

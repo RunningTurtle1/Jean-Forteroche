@@ -13,7 +13,8 @@
         <?= nl2br(htmlspecialchars($post['publicationText']));?>
         </p>
     </div>
-
+    <h2> Commentaires </h2>
+    <div class="deco"></div>
     <div class="comments">
         <?php
             foreach ($comments as $comment)
@@ -30,7 +31,7 @@
         ?>
     </div>
 
-    <div class="comment">
+    <div class="commentarea">
         <form action="index.php?action=addComment&amp;publicationId=<?= $_GET['publicationId']?>" method="post">
            <textarea type="textarea" id="comment" name="comment"> </textarea>
            <p> <input type="submit" value="envoyer"/> </p>
