@@ -20,7 +20,7 @@
                 Bienvenue <?= $_SESSION['username'] ?>
             </li>
             <?php 
-                if($_SESSION['admin'])
+                if(isset($_SESSION['admin']))
                 {
             ?>
                 <li>

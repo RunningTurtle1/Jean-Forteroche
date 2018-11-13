@@ -21,7 +21,7 @@ if (isset($_GET['action']))
             orderReports();
         break;
         case "deletepost":
-            require('controller/publicationManager');
+            require('controller/publicationManager.php');
             deletePost();
             header('location:index.php?action=adm');
         break;
@@ -50,6 +50,8 @@ if (isset($_GET['action']))
             
         break;
         case "authentification": 
+            require('controller/user.php');
+            userSignOut();
             require('view/authentification.php');
         break;
         case "auth":

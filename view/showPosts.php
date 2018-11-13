@@ -1,4 +1,4 @@
-<div class="posts adm">  
+<div class="posts adm col-lg-12">  
     <h2> Les articles </h2>
     <div class="deco"> </div>
     <?php
@@ -6,7 +6,7 @@
         foreach ($posts as $post)
         {
     ?>
-        <div class="posts col-sm-6">
+        <div class="post col-lg-6">
             <h3>
                 <?php echo htmlspecialchars($post['post'][1]); ?>
                 <em>le <?php echo $post['post'][3]; ?></em>

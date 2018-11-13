@@ -48,7 +48,8 @@ function createPost ()
 function deletePost ()
 {
     checkAdmin();
-
+    require('model/pubs.php');
+    $publication = new PublicationManager();
     $publication->deletePost($_GET['publicationId']);
     require('model/comments.php');
     $comments = new CommentManager();

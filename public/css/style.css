@@ -26,9 +26,10 @@ header
 }
 header h1
 {
-    font-size: 60px;
+    font-size: 3.2em;
     color: rgb(230, 230, 230); 
     z-index: 1;
+    text-align: center;
 }
 #background
 {
@@ -69,6 +70,38 @@ ul a
     margin: 5px 0;
 }
 
+.title
+{
+    background-color: #337ab7;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+.title a
+{
+    color: white;
+}
+.posts em
+{
+    color: #337ab7;
+    font-weight: bold;
+}
+.posts p
+{
+    text-align: justify;
+}
+.line
+{
+    width: 20%;
+    height: 5px;
+    border-bottom: lightgray 1px solid;
+    margin-bottom: 10px;
+}
+.mce-widget
+{
+    display: none;
+}
+
 /**!! 
 
 FORMULAIRES 
@@ -78,7 +111,7 @@ input
 {
     margin-top: 5px;
 }
-.submit
+.submit, button
 {
     border-radius: 15px;
     font-weight: bold;
@@ -87,7 +120,7 @@ input
     border: 0px;
     background-color:#1E90FF;
 }
-#authentification{
+#authentification, #createaccount{
     background: lightgray;
     float: none !important;
     margin: auto;
@@ -109,6 +142,10 @@ h2
 {
     text-align: center;
     font-size: 2.8em;
+}
+.post h3
+{
+    text-align: center;
 }
 .deco:before
 {
@@ -145,6 +182,17 @@ h2
 	right: -16px;
 	z-index: 1;
 }	
+#button
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.editor
+{
+    display: flex; 
+    justify-content: center;
+}
 
 /** 
 
@@ -161,4 +209,18 @@ h2
 .comment{
     margin-bottom: 15px;
     border-bottom: 1px silver solid;
+}
+
+/** 
+
+!!
+    MEDIA QUERRIES
+!!
+**/
+@media all and (max-device-width: 480px) and (orientation: portrait)
+{
+    header h1
+    {
+        font-size: 2em
+    }
 }

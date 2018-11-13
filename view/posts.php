@@ -2,7 +2,7 @@
         if ($_GET['action'] == "editpost")
         {
     ?>
-        <div>
+        <div class="editor">
             <form action="index.php?action=editedpost&amp;publicationId=<?php echo $post['publicationId'];?>" method="post">
                 <p>
                     <label for="title"> Titre de l'article <br />
@@ -16,7 +16,7 @@
                         </textarea>
                     </label>
                 </p>
-                <p><input type="submit" class="submit" value="Modifier"></p>
+                <p><input type="submit" class="submit" id="titleSubmit" value="Modifier"></p>
             </form>
         </div>
     <?php
@@ -24,7 +24,7 @@
         else
         {
     ?>
-    <div>
+    <div class="editor">
         <form action="index.php?action=createpub" method="post">
             <p>
                 <label for="title"> Titre de l'article <br />
