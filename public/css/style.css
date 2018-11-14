@@ -97,6 +97,27 @@ ul a
     border-bottom: lightgray 1px solid;
     margin-bottom: 10px;
 }
+.page
+{
+    text-align: center;   
+}
+.page a 
+{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    margin: 8px;
+    border-radius: 8px;
+    background-color: lightgray;
+    font-weight: bold;
+}
+.page a:hover
+{
+    background-color: #337ab7;
+    color: white;
+    text-decoration: none;
+}
 .mce-widget
 {
     display: none;

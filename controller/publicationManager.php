@@ -84,7 +84,15 @@ function showPosts ()
 {
     require_once('model/pubs.php');
     $publicationManager = new PublicationManager();
-    $posts = $publicationManager->getPosts();
+    $nbPage = $publicationManager->nbPages();
+    if(isset($_GET['cPage']) && (($_GET['cPage']) >0) && (($_GET['cPage']) <= $nbPage))
+    {
+        $posts = $publicationManager->showPosts($_GET['cPage']);
+    }
+    else
+    {
+        $posts = $publicationManager->showPosts(1);
+    }
     require('view/mainPage.php');
 }
 ?>
