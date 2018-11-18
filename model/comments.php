@@ -26,6 +26,7 @@ class CommentManager extends connexionManager
 
     public function deleteComments ($publicationId)
     {
+        //cette fonction détruit tous les commentaires liés à une publication elle même supprimée
         $db = $this->dbconnect();
         $req = $db->prepare('DELETE FROM comments WHERE publicationId = ?');
         $req->execute(array($publicationId));
@@ -33,6 +34,7 @@ class CommentManager extends connexionManager
 
     public function deleteComment ($commentId)
     {
+        //celle ci détruit un commentaire qui a été signalé 
         $db = $this->dbconnect();
         $req = $db->prepare('DELETE FROM comments WHERE commentId = ?');
         $req->execute(array($commentId));

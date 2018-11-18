@@ -13,7 +13,7 @@
                 <em>le <?= $post['publicationDate']; ?></em>
             </h3>
             <p>
-            <?= nl2br(htmlspecialchars($post['publicationText']));?>
+            <?= ($post['publicationText']);?>
             </p>
         </div>
         <h2> Commentaires </h2>
@@ -24,7 +24,7 @@
                 {
             ?>
                     <div class="comment">
-                        <?= htmlspecialchars($comment['comment'][1])?> <br />
+                        <?= $comment['comment'][1]?> <br />
                         <?= $comment['comment'][4] ?>
                         <?= $comment['comment'][2]?>
                         <a href="index.php?action=report&amp;commentId=<?= $comment['comment'][0]?>&amp;publicationId=<?= $_GET['publicationId']?>">Signaler</a>

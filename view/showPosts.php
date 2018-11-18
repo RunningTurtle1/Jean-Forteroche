@@ -8,7 +8,7 @@
     ?>
         <div class="post col-lg-6">
             <h3>
-                <?php echo htmlspecialchars($post['post'][1]); ?>
+                <?php echo $post['post'][1]; ?>
                 <em>le <?php echo $post['post'][3]; ?></em>
             </h3>
             <a href="index.php?action=editpost&amp;publicationId=<?php echo $post['post'][0]?>"> Modifier l'article </a> <br />

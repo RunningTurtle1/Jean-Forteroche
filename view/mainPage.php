@@ -27,7 +27,7 @@
                 <div class="line"></div>
                 <p>
                 <?php
-                echo nl2br(htmlspecialchars(substr($post['post'][2], 0, 500)));
+                echo (substr($post['post'][2], 0, 500));
                 ?>[...]
                 <br />
                 <em><a href="index.php?action=readpost&amp;publicationId=<?php echo $post['post'][0] ?>" >Commentaires</a></em>

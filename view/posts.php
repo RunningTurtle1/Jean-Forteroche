@@ -2,6 +2,8 @@
         if ($_GET['action'] == "editpost")
         {
     ?>
+    <h2 id="editorTitle"> Modifier l'article </h2>
+        <div class="deco"></div>
         <div class="editor">
             <form action="index.php?action=editedpost&amp;publicationId=<?php echo $post['publicationId'];?>" method="post">
                 <p>
@@ -24,7 +26,10 @@
         else
         {
     ?>
-    <div class="editor">
+    <h2 id="editorTitle"> Nouvel article </h2>
+        <div class="deco"></div>
+        <div id="button"><button id="showeditor">Ecrire un nouvel article</button></div>
+    <div class="editor" id="editor">
         <form action="index.php?action=createpub" method="post">
             <p>
                 <label for="title"> Titre de l'article <br />

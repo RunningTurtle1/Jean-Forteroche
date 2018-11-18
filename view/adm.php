@@ -2,12 +2,19 @@
     include('view/head.php');
 ?>
 <body>
-    <a href="index.php">Retour à la page d'acceuil</a> <a href="index.php?action=signout">Me déconnecter </a>
+    <ul class="nav">
+        <li>
+            <a href="index.php" >Retour à la page d'acceuil</a>
+        </li>
+        <li>
+            <a href="index.php?action=adm" >Page d'administration</a>
+        </li>
+        <li>
+            <a href="index.php?action=signout" >Me déconnecter </a>
+        </li>
+    </ul>
     <div class="container">    
-        <h2 id="editorTitle"> Nouvel article </h2>
-        <div class="deco"></div>
-        <div id="button"><button id="showeditor">Ecrire un nouvel article</button></div>
-        <div class="row" id="textEditor">
+        <div class="row">
             <?php include('view/posts.php') ?>
             <?php if(!($_GET['action'] == 'editpost'))
             {

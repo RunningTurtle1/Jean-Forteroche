@@ -12,15 +12,18 @@ class PublicationManager extends connexionManager
         $perPage = 3;
         $nbPage = ceil($nbArt / $perPage);
         $var = (($cPage - 1) * $perPage);
+        //le première partie de la fonction permet de préparer la pagination du des articles
         $req = $db->prepare('SELECT * FROM publication ORDER BY publicationId DESC LIMIT :cPage , :perPage ');
         $req->bindValue(':cPage', $var, PDO::PARAM_INT);
         $req->bindValue(':perPage', $perPage, PDO::PARAM_INT);
+        //on récupère les articles correspondant à la page selectionnée
         $req->execute();
         $posts = [];
         while ($data = $req->fetch())
         {
             $posts[] = ['post'=>$data];
         }
+        //on met directement les données dans un tableau avant de les envoyer au controller
         $req->closeCursor();
         return $posts;
     }
@@ -28,13 +31,27 @@ class PublicationManager extends connexionManager
     public function nbPages ()
     {
         $db = $this->dbconnect();
-        
+        //cette fonction permet simplement de calculer le nombre de pages necessaires à l'affichage des articles
         $req =$db->query('SELECT COUNT(publicationId) as nbArt FROM publication'); 
         $data = $req->fetch();
         $nbArt = $data['nbArt'];
         $perPage = 3;
         $nbPage = ceil($nbArt / $perPage);
         return $nbPage;
+    }
+
+    public function getPosts ()
+    {
+        $db = $this->dbconnect();
+        //la fonction récupère les articles pour l'interface d'administration
+        $req =$db->query('SELECT * FROM publication'); 
+        $data = $req->fetch();
+        $posts = [];
+        while ($data = $req->fetch())
+        {
+            $posts[] = ['post'=>$data];
+        }
+        return $posts;
     }
     
     public function getPost ($publicationId)
@@ -69,6 +86,7 @@ class PublicationManager extends connexionManager
 
     public function getComments ($publicationId)
     {
+        //cette fonction permet de récupérer les commentaires liés à l'article consulté par l'utilisateur
         $db = $this->dbconnect();
         $req = $db->prepare('SELECT * FROM comments WHERE publicationId = ?');
         $comments = $req->execute(array($_GET['publicationId']));
