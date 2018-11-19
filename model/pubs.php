@@ -45,7 +45,6 @@ class PublicationManager extends connexionManager
         $db = $this->dbconnect();
         //la fonction récupère les articles pour l'interface d'administration
         $req =$db->query('SELECT * FROM publication'); 
-        $data = $req->fetch();
         $posts = [];
         while ($data = $req->fetch())
         {
@@ -55,6 +54,7 @@ class PublicationManager extends connexionManager
     }
     
     public function getPost ($publicationId)
+    //récupère une publication en fonction de son identifiant
     {
         $db = $this->dbconnect();
         $req = $db->prepare('SELECT * FROM publication WHERE publicationId = ?');
@@ -64,6 +64,7 @@ class PublicationManager extends connexionManager
     }
 
     public function deletePost ($publicationId)
+    //supprime une publication de la base de donnée 
     {
         $db = $this->dbconnect();
         $req = $db->prepare('DELETE FROM publication WHERE publicationId = ?');
@@ -71,6 +72,7 @@ class PublicationManager extends connexionManager
     }
     
     public function editPost ($publicationId)
+    //met à jour le titre de la publication et son contenu par l'auteur
     {
         $db = $this->dbconnect();
         $req = $db->prepare('UPDATE publication SET publicationTitle = ?, publicationText = ? WHERE publicationId = ?');
@@ -78,6 +80,7 @@ class PublicationManager extends connexionManager
     }
 
     public function addPub ()
+    //ajoute un article écrit par l'auteur à base de données
     {
         $db = $this->dbconnect();
         $req = $db->prepare('INSERT INTO publication(publicationTitle, publicationText, publicationDate) VALUE (?, ?, NOW())');
