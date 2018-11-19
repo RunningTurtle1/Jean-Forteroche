@@ -3,6 +3,7 @@ require_once("model/connexionManager.php");
 class CommentManager extends connexionManager
 {
     public function showComments ()
+    //récupère les commentaires liés à une publication
     {
         $db = $this->dbconnect();
         $req = $db->prepare('SELECT * FROM comments WHERE publicationId = ?');
@@ -17,6 +18,7 @@ class CommentManager extends connexionManager
     }
     
     public function addComment ($comment, $publicationId, $username)
+    //ajoute un commentaire à la base de donnée
     {
         $db = $this->dbconnect();
         $req = $db->prepare('INSERT INTO comments(textContent, commentDate, publicationId, username) VALUES (?, NOW(), ?, ?)');
@@ -41,6 +43,7 @@ class CommentManager extends connexionManager
     }
 
     public function unreportcomment ($commentId)
+    //retire le commentaire de la table des signalements
     {
         $db = $this->dbconnect();
         $req = $db->prepare('DELETE FROM comments_report WHERE commentId = ?');
@@ -48,6 +51,7 @@ class CommentManager extends connexionManager
     }
 
     public function reportComment ($commentId, $reporterId)
+    //ajoute le commentaire dans la table des objets signalés
     {
         $db = $this->dbconnect();
         $req = $db->prepare('INSERT INTO comments_report(commentId, reporterId) VALUES (?, ?)');
@@ -55,6 +59,7 @@ class CommentManager extends connexionManager
     }
 
     public function getComment ($commentId)
+    //récupère un commentaire en fonction de son id pour l'afficher dans l'interface d'administration
     {
         $db = $this->dbconnect();
         $req = $db->prepare('SELECT textContent, username, commentId

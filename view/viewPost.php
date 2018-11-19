@@ -24,9 +24,9 @@
                 {
             ?>
                     <div class="comment">
-                        <?= $comment['comment'][1]?> <br />
-                        <?= $comment['comment'][4] ?>
-                        <?= $comment['comment'][2]?>
+                        <?= $comment['comment'][1]?> <br /> <!--Le texte du commentaire-->
+                        <?= $comment['comment'][4] ?><!--Nom d'utilisateur -->
+                        <?= $comment['comment'][2]?><!-- Date du commentaire -->
                         <a href="index.php?action=report&amp;commentId=<?= $comment['comment'][0]?>&amp;publicationId=<?= $_GET['publicationId']?>">Signaler</a>
                     </div>
             <?php

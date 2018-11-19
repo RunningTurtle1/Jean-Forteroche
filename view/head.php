@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title> Jean Rochefort, écrivain </title>
+        <title> Jean Forteroche, écrivain </title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="public/css/bootstrap.min.css" rel="stylesheet">
         <link href="public/css/style.css" rel="stylesheet">

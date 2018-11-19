@@ -67,8 +67,9 @@ class PublicationManager extends connexionManager
     //supprime une publication de la base de donnée 
     {
         $db = $this->dbconnect();
-        $req = $db->prepare('DELETE FROM publication WHERE publicationId = ?');
-        $req->execute(array($publicationId));
+        $req = $db->prepare('DELETE FROM publication WHERE publicationId = :publicationId');
+        $req->bindValue(':publicationId', $publicationId, PDO::PARAM_INT);
+        $req->execute();
     }
     
     public function editPost ($publicationId)

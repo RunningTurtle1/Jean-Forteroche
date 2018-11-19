@@ -20,6 +20,7 @@ function addComment ()
 }
 
 function deletecomment ()
+//supprime un commentaire et le retire de la table des commentaires signalés
 {
     $commentManager = new CommentManager();
     $commentManager->deleteComment($_GET['commentId']);
@@ -28,6 +29,7 @@ function deletecomment ()
 }
 
 function unreportcomment()
+//retire le commentaire de la table des commentaires signalés
 {
     $commentManager = new CommentManager();
     $commentManager->unreportcomment($_GET['commentId']);
@@ -35,6 +37,7 @@ function unreportcomment()
 }
 
 function reportComment()
+//ajoute un commentaire à la table des objets signalés
 {
     checkUserLoggin();
     if ($_SESSION['userConnected'] || $_SESSION['admin'])

@@ -23,7 +23,6 @@ if (isset($_GET['action']))
         case "deletepost":
             require('controller/publicationManager.php');
             deletePost();
-            header('location:index.php?action=adm');
         break;
         case "deletecomment":
             require('controller/commentManager.php');

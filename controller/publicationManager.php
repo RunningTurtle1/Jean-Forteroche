@@ -54,6 +54,7 @@ function deletePost ()
     require('model/comments.php');
     $comments = new CommentManager();
     $comments->deleteComments($_GET['publicationId']);
+    header('location:index.php?action=adm');
 }
 
 function editPost ()
